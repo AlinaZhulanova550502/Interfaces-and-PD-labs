@@ -13,8 +13,8 @@ namespace IIPU_lab3
 {
     public partial class Form1 : Form
     {
-        private static readonly Work work = new Work();
-        private static readonly Regex timeExpression = new Regex(@"^\d+$");
+        private readonly Work work = new Work();
+        private readonly Regex timeExpression = new Regex(@"^\d+$");
         public Form1()
         {
             InitializeComponent();
@@ -48,35 +48,7 @@ namespace IIPU_lab3
             Updating();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SleepTime_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ChargeLable_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void SetTime_Click(object sender, EventArgs e)
         {
@@ -88,10 +60,6 @@ namespace IIPU_lab3
             NewTime.Text = String.Empty;
         }
 
-        private void Charge_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void Timer_Tick_1(object sender, EventArgs e)
         {

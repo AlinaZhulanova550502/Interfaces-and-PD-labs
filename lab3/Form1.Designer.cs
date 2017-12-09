@@ -48,7 +48,7 @@
             this.Charge.Name = "Charge";
             this.Charge.Size = new System.Drawing.Size(223, 23);
             this.Charge.TabIndex = 1;
-            this.Charge.Click += new System.EventHandler(this.Charge_Click);
+       
             // 
             // SleepLable
             // 
@@ -58,7 +58,6 @@
             this.SleepLable.Size = new System.Drawing.Size(88, 13);
             this.SleepLable.TabIndex = 2;
             this.SleepLable.Text = " Sleep mode time";
-            this.SleepLable.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // label2
             // 
@@ -68,7 +67,6 @@
             this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Power status";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -78,7 +76,6 @@
             this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Time left";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // SleepTime
             // 
@@ -87,7 +84,6 @@
             this.SleepTime.Name = "SleepTime";
             this.SleepTime.Size = new System.Drawing.Size(100, 20);
             this.SleepTime.TabIndex = 5;
-            this.SleepTime.TextChanged += new System.EventHandler(this.SleepTime_TextChanged);
             // 
             // Status
             // 
@@ -133,7 +129,7 @@
             this.ChargeLable.Name = "ChargeLable";
             this.ChargeLable.Size = new System.Drawing.Size(0, 13);
             this.ChargeLable.TabIndex = 10;
-            this.ChargeLable.Click += new System.EventHandler(this.ChargeLable_Click);
+  
             // 
             // Form1
             // 
