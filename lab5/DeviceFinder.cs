@@ -26,27 +26,30 @@ namespace lab5
 
             foreach (ManagementObject device in deviceList.Get())
             {
+                //try
+                //{
+                    List<SysFile> sysFiles = new List<SysFile>();
 
-                List<SysFile> sysFiles = new List<SysFile>();
-            
-                foreach (var sysFile in device.GetRelated("Win32_SystemDriver"))
-                  {
-                     sysFiles.Add(new SysFile(sysFile["PathName"]?.ToString(), sysFile["Description"]?.ToString()));
-                  }
+                    foreach (var sysFile in device.GetRelated("Win32_SystemDriver"))
+                    {
+                       sysFiles.Add(new SysFile(sysFile["PathName"]?.ToString(), sysFile["Description"]?.ToString()));
+                    }
 
-                devices.Add(new Device(
-                     device["Name"]?.ToString(),
-                     device["DeviceID"]?.ToString(),
-                     device["ClassGuid"]?.ToString(),
-                     device["HardwareID"] != null ? (string[])device["HardwareID"] : null,
-                     device["Manufacturer"]?.ToString(),
-                     sysFiles,
-                     device.GetPropertyValue("Status").ToString().Equals("OK")));
+                    devices.Add(new Device(
+                        device["Name"]?.ToString(),
+                        device["DeviceID"]?.ToString(),
+                        device["ClassGuid"]?.ToString(),
+                        device["HardwareID"] != null ? (string[])device["HardwareID"] : null,
+                        device["Manufacturer"]?.ToString(),
+                        sysFiles,
+                        device.GetPropertyValue("Status").ToString().Equals("OK")));
 
                 if (SystemName == null)
                 {
                     SystemName = device["SystemName"].ToString();
                 }
+                //}
+                //catch (NullReferenceException) { }
             }
 
         }
