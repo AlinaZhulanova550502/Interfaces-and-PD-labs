@@ -28,9 +28,7 @@ namespace lab5
 
             button1.Enabled = false;
 
-            label5.Text = "System name: " + deviceFinder.SystemName;
-
-            foreach (var device in deviceFinder.devices)
+            foreach (var device in deviceFinder.Devices)
             {
                 addComponent(device);
             }
@@ -45,34 +43,34 @@ namespace lab5
         {
             listView2.Clear();
 
-            listView2.Items.Add("Name: " + deviceFinder.devices[selectedIndex].Name);
-            listView2.Items.Add("DeviceID: " + deviceFinder.devices[selectedIndex].DeviceID);
-            listView2.Items.Add("GUID: " + deviceFinder.devices[selectedIndex].GUID);
-            listView2.Items.Add("Manufacturer: " + deviceFinder.devices[selectedIndex].Manufacturer);
+            listView2.Items.Add("Name: " + deviceFinder.Devices[selectedIndex].Name);
+            listView2.Items.Add("DeviceID: " + deviceFinder.Devices[selectedIndex].DeviceID);
+            listView2.Items.Add("GUID: " + deviceFinder.Devices[selectedIndex].GUID);
+            listView2.Items.Add("Manufacturer: " + deviceFinder.Devices[selectedIndex].Manufacturer);
 
             listView2.Items.Add("\nHardwareIDInfo: ");
             try
             {
-                foreach (var hardwareID in deviceFinder.devices[selectedIndex].HardwareID)
+                foreach (var hardwareID in deviceFinder.Devices[selectedIndex].HardwareID)
                 {
                     listView2.Items.Add(hardwareID);
                 }
             }
             catch (NullReferenceException) { }
 
-            if (deviceFinder.devices[selectedIndex].SysFiles.Count != 0)
+            if (deviceFinder.Devices[selectedIndex].SysFiles.Count != 0)
             {
                 listView2.Items.Add("Sys Files: ");
-                foreach (var sysFile in deviceFinder.devices[selectedIndex].SysFiles)
+                foreach (var sysFile in deviceFinder.Devices[selectedIndex].SysFiles)
                 {
                     listView2.Items.Add("Path: " + sysFile.Path);
                     listView2.Items.Add("Description: " + sysFile.Description);
                 }
             }
 
-            listView2.Items.Add("Status: " + (deviceFinder.devices[selectedIndex].Status ? "on" : "off"));
+            listView2.Items.Add("Status: " + (deviceFinder.Devices[selectedIndex].Status ? "on" : "off"));
 
-            button1.Text = (deviceFinder.devices[selectedIndex].Status ? "Turn off" : "Turn on");
+            button1.Text = (deviceFinder.Devices[selectedIndex].Status ? "Turn off" : "Turn on");
             button1.Enabled = true;
         }
 
@@ -95,37 +93,8 @@ namespace lab5
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (deviceFinder.devices[listView1.FocusedItem.Index].Status)
-            {
-                if (deviceFinder.TurnOff(deviceFinder.devices[selectedIndex]))
-                {
-                    MessageBox.Show(@"Done!");
-                }
-                else
-                {
-                     MessageBox.Show(@"Try again!");
-                }
-            }
-            else
-            {
-                if (deviceFinder.TurnOn(deviceFinder.devices[selectedIndex]))
-                {
-                    MessageBox.Show(@"Done!");
-                }
-                else
-                {
-                    MessageBox.Show(@"Try again!");
-                }
-
-            }
-
+            MessageBox.Show(deviceFinder.TurnOnOff(deviceFinder.Devices[selectedIndex]) ? "Ok" : "Try again");
             addDescription();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }
