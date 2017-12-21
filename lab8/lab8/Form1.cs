@@ -9,6 +9,8 @@ namespace lab8
         private MouseEventsLogger _mouseLogger;
         private Settings _settings;
 
+        private Locker locker;
+
         private const string LogsDirrectory = @"d:/lab8_files/logs/";
         private const string SettingsFullPath = @"d:/lab8_files/Settings.txt";
 
@@ -49,6 +51,8 @@ namespace lab8
             _keyBoardLogger.StartLogger(this);
             _mouseLogger.StartLogger();
             _watcher.StartWatcher();
+            locker = new Locker();
+            locker.StartLocker();
         }
 
         private void Form1_Shown(object sender, EventArgs e) => IsVisible = _settings.StartInNormalMode;
@@ -58,6 +62,7 @@ namespace lab8
             _keyBoardLogger.StopLogger();
             _mouseLogger.StopLogger();
             _watcher.StopWatcher();
+            locker.StopLocker();
         }
 
         public bool IsVisible
@@ -81,6 +86,8 @@ namespace lab8
                 MessageBox.Show(@"Saved!");
             }
             UpdateSettings();
+
+            locker.StartLocker();
         }
 
         private void UpdateSettings()
